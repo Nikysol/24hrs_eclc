@@ -1,7 +1,7 @@
 :root {
     --font-base: ocr a;
     --color-text: #00000f;
-    --color-bg: #71a5ff;
+    --color-bg: #7dadff;
 }
 
 /* Estilos default */
@@ -12,6 +12,7 @@ body {
     padding: 0;
     margin: 0;
 }
+background-image: url('images/mi-fondo.png');
 
 a {
     color: var(--color-text);
