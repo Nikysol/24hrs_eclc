@@ -131,7 +131,7 @@ body.about-page {
   
   /* Imagen encima del fondo negro */
   body.about-page .background-image {
-    background-image: url('./img/tu-imagen.png'); /* pon la ruta de tu imagen */
+    background-image: url('./img/background-image.jpg'); /* pon la ruta de tu imagen */
     background-size: contain;  /* o cover si quieres que llene */
     background-repeat: no-repeat;
     background-position: center;
