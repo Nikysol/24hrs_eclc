@@ -1,7 +1,7 @@
 :root {
     --font-base: ocr a;
-    --color-text: #00000f;
-    --color-bg: #7dadff;
+    --color-text: #ffffff;
+    --color-bg: #000000;
 }
 
 /* Estilos default */
@@ -71,7 +71,7 @@ footer#main-footer {
     width: 100px;
 }
 
-body {
+body.index.html {
   margin: 20;
   padding: 20;
   font-family: "ocr-a-std", monospace;
@@ -108,7 +108,31 @@ nav a:hover {
   background: rgb(142, 141, 141);
   color: black;
 }
-
+/* 🎨 Solo Home (index.html) */
+body.home-page {
+    margin: 0;
+    padding: 0;
+    font-family: "ocr-a-std", monospace;
+    background-image: url('../img/tu-image.jpg'); /* tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 👈 imagen fija */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  /* 🎨 About (y otras páginas) */
+  body.about-page {
+    background-color: black; /* fondo sólido */
+    font-family: "ocr-a-std", monospace;
+    color: white;
+    margin: 0;
+    padding: 20px;
+  }
+  
 /* Título en el centro */
 .title {
   flex-grow: 1;
@@ -131,18 +155,25 @@ body.about-page {
   
   /* Imagen encima del fondo negro */
   body.about-page .background-image {
-    background-image: url('./img/background-image.jpg'); /* pon la ruta de tu imagen */
-    background-size: contain;  /* o cover si quieres que llene */
+    background-image: url('../img/background-image.jpg');
+    background-size: cover;  /* o cover si quieres que llene */
     background-repeat: no-repeat;
     background-position: center;
   
-    position: absolute;
-    top: 0;
+    position: center;
+    top: -50;
     left: 0;
     width: 100%;
     height: 100%;
   
-    opacity: 0.2; /* controla transparencia de la imagen */
+    opacity: 100; /* controla transparencia de la imagen */
     z-index: -1;  /* para que quede detrás del texto */
+  }
+  /* Texto más angosto */
+body.about-page .content {
+    max-width: 800px;   /* controla qué tan ancho puede ser el texto */
+    margin: 40px auto;  /* centra horizontalmente y da espacio arriba/abajo */
+    padding: 0 20px;    /* pequeño padding a los lados */
+    line-height: 1.6;   /* mejora legibilidad */
   }
   
