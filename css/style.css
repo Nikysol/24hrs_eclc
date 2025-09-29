@@ -212,4 +212,88 @@ body.timelapse-page .bg-video {
     object-fit: cover;
     z-index: -1; /* Pone el video detrás del contenido */
   }
+  /* ====== Testimonios ====== */
+.testimonios-page {
+    font-family: "ocr-a-std", monospace;
+    color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    padding: 50px;
+    justify-items: center;
+  }
+  
+  .testimonio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .testimonio .numero {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .testimonio img {
+    width: 120px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Texto al final */
+  .testimonios-texto {
+    max-width: 800px;
+    margin: 50px auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #222;
+    text-align: center;
+  }
+  /* ====== Fotografía ====== */
+.fotografia-page {
+    font-family: "ocr-a-std", monospace;
+    background: #ffffff; /* fondo neutro similar al ejemplo */
+    color: black;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .foto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 40px;
+    padding: 60px;
+    justify-items: center;
+  }
+  
+  .foto {
+    width: 250px;
+    height: 250px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Opción: deja huecos random en el grid */
+  .foto:nth-child(2) {
+    grid-column: span 2; /* ocupa 2 columnas */
+  }
+  .foto:nth-child(5) {
+    grid-row: span 2; /* ocupa 2 filas */
+  }
+  
   
