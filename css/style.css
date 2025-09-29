@@ -176,4 +176,31 @@ body.about-page .content {
     padding: 0 20px;    /* pequeño padding a los lados */
     line-height: 1.6;   /* mejora legibilidad */
   }
+  /* 🎬 Video solo para timelapse */
+body.timelapse-page .bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* queda detrás del contenido */
+  }
+  
+  /* Ajustes de texto y layout en timelapse */
+  body.timelapse-page {
+    margin: 0;
+    font-family: "ocr-a-std", monospace;
+    color: white;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  body.timelapse-page .content {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.5); /* 👈 fondo oscuro semitransparente */
+    border-radius: 12px;
+  }
   
