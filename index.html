@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>24hrs</title>
-  <!-- Tipografía OCR A desde Adobe Fonts -->
-  <link rel="stylesheet" href="https://use.typekit.net/jlq1eip.css">
- <link rel="stylesheet" href="./css/style.css">
-</head>
+<meta charset="UTF-8">
+<title>24hrs EJE CENTRAL</title>
+<link rel="stylesheet" href="./css/style.css">
 
-<body class="home-page">
-  <nav>
-    <a href="./about.html" title="|Acerca de"">About</a>
-    <a href="timelapse.html" title="timelapse">Timelapse</a>
-    <a href="testimonios.html">Testimonios</a>
-    <a href="fotografia.html">Fotografía</a>
-  </nav>
-  <div class="title">
-    24hrs eje central 
-  </div>
+<style>
+    /* Reseteo */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Contenedor general */
+    body, html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Video de fondo */
+    #bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    /* Overlay (marco y contenido) */
+    .overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 900px;
+        padding: 20px;
+        z-index: 5;
+    }
+
+    /* Imagen clicable */
+    .click-image {
+        width: 100%;
+        cursor: pointer;
+        display: block;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- VIDEO DE FONDO -->
+<video id="bg-video" autoplay muted loop playsinline>
+    <source src="video/home.mp4" type="video/mp4">
+</video>
+
+<!-- OVERLAY ESTILO "INTERFAZ" -->
+<div class="overlay">
+    <a href="about.html">
+        <img src="img/logo nuevo-02.png" alt="Overlay" class="click-image">
+    </a>
+</div>
+
 </body>
 </html>

@@ -75,7 +75,7 @@ body.index.html {
   margin: 20;
   padding: 20;
   font-family: "ocr-a-std", monospace;
-  background-image: url('../img/tu-image.jpg');
+  background-image: url('../img/logo nuevo-02.png');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -113,7 +113,7 @@ body.home-page {
     margin: 0;
     padding: 0;
     font-family: "ocr-a-std", monospace;
-    background-image: url('../img/tu-image.jpg'); /* tu imagen */
+    background-image: url('../img/logo nuevo-02.png.'); /* tu imagen */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* 👈 imagen fija */
@@ -155,8 +155,8 @@ body.about-page {
   
   /* Imagen encima del fondo negro */
   body.about-page .background-image {
-    background-image: url('../img/background-image.jpg');
-    background-size: cover;  /* o cover si quieres que llene */
+    background-image: url('../img/logo nulo.png');
+    background-size: cover;  
     background-repeat: no-repeat;
     background-position: center;
   
