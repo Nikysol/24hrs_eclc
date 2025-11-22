@@ -82,7 +82,7 @@ body.index.html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 /* Barra superior */
@@ -121,14 +121,14 @@ body.home-page {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   /* 🎨 About (y otras páginas) */
   body.about-page {
     background-color: black; /* fondo sólido */
     font-family: "ocr-a-std", monospace;
-    color: white;
+    color: rgb(0, 0, 0);
     margin: 0;
     padding: 20px;
   }
@@ -256,37 +256,7 @@ body.timelapse-page .bg-video {
     color: #222;
     text-align: center;
   }
-  /* ====== Fotografía ====== */
-.fotografia-page {
-    font-family: "ocr-a-std", monospace;
-    background: #ffffff; /* fondo neutro similar al ejemplo */
-    color: black;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .foto-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    gap: 40px;
-    padding: 60px;
-    justify-items: center;
-  }
-  
-  .foto {
-    width: 250px;
-    height: 250px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
   
   /* Opción: deja huecos random en el grid */
   .foto:nth-child(2) {
@@ -296,4 +266,122 @@ body.timelapse-page .bg-video {
     grid-row: span 2; /* ocupa 2 filas */
   }
   
-  
+  body {
+    margin: 0;
+    background: #5f5f5f;
+    font-family: monospace;
+}
+
+/* Caja principal del reader */
+.reader {
+    width: 95%;
+    margin: 20px auto;
+    border: 2px solid white;
+}
+
+/* Parte superior */
+.reader-top {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background: #2f2f2f;
+    color: white;
+    border-bottom: 2px solid white;
+    padding: 20px;
+}
+
+/* Botones */
+.btn-left,
+.btn-right {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.btn-left {
+    justify-self: start;
+}
+
+.btn-right {
+    justify-self: end;
+}
+
+/* Logo centrado */
+.logo {
+    height: 45px;   /* ajusta tamaño según tu logo */
+    width: auto;
+    filter: brightness(10); /* si tu logo es blanco, se intensifica */
+}
+
+/* Pantalla negra */
+.reader-screen {
+    background: black;
+    height: 70vh;
+}
+
+body {
+  margin: 0;
+  background: #646464;
+  font-family: monospace;
+}
+
+/* Caja del reader */
+.reader {
+  width: 98%;
+  margin: 20px auto;
+  border: 2px solid white;
+}
+
+/* Barra superior igual a la imagen */
+.top-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: #2f2f2f;
+  color: white;
+  border-bottom: 2px solid white;
+  padding: 18px 20px;
+}
+
+/* Botones */
+.left-btn,
+.right-btn {
+  letter-spacing: 3px;
+  font-size: 16px;
+}
+
+.left-btn {
+  justify-self: start;
+}
+
+.right-btn {
+  justify-self: end;
+}
+
+/* Logo centrado estilo barras */
+.logo {
+  font-size: 45px;
+  letter-spacing: 5px;
+}
+
+/* Parte negra inferior */
+.content-area {
+  background: black;
+  height: 70vh;
+  padding: 20px;
+}
+
+/* Texto dentro del área negra */
+.text-area {
+  color: white;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+container {
+  display: flex;
+  justify-content: space-around;
+}
