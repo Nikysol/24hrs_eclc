@@ -91,7 +91,7 @@ nav {
   justify-content: flex-end;
   gap: 20px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(185, 184, 184);
 }
 
 nav a {
@@ -105,8 +105,8 @@ nav a {
 }
 
 nav a:hover {
-  background: rgb(142, 141, 141);
-  color: black;
+  background: rgba(79, 79, 79, 0.346);
+  color: rgb(255, 255, 255);
 }
 /* 🎨 Solo Home (index.html) */
 body.home-page {
