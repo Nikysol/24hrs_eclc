@@ -91,7 +91,7 @@ nav {
   justify-content: flex-end;
   gap: 20px;
   padding: 20px;
-  background: rgb(185, 184, 184);
+  background: rgb(44, 44, 44);
 }
 
 nav a {
@@ -105,7 +105,7 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(79, 79, 79, 0.346);
+  background: rgba(97, 95, 95, 0.346);
   color: rgb(255, 255, 255);
 }
 /* 🎨 Solo Home (index.html) */
@@ -268,7 +268,7 @@ body.timelapse-page .bg-video {
   
   body {
     margin: 0;
-    background: #5f5f5f;
+    background: #363636;
     font-family: monospace;
 }
 
