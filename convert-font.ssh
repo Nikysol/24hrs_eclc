@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Convirtiendo...";
+pyftsubset ./fonts/24hrsRegular.ttf --layout-features="*" --flavor="woff2" --output-file="./fonts/24hrsRegular.woff2"
