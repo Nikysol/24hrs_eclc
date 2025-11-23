@@ -1,5 +1,12 @@
+@font-face {
+    font-family: '24hrsRegular';
+    src: url('../fonts/24hrsRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
-    --font-base: ocr a;
+    --font-base: '24hrsRegular', monospace;
     --color-text: #ffffff;
     --color-bg: #000000;
 }
