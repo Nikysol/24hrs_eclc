@@ -5,6 +5,12 @@
     font-style: normal;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
     --font-base: '24hrsRegular', monospace;
     --color-text: #ffffff;
@@ -15,7 +21,7 @@
 body {
   margin: 0;
   background: #242424;
-  font-family: monospace;
+  font-family: var(--font-base);
   display: flex;
   justify-content: center;
   padding: 40px 0;
@@ -87,10 +93,10 @@ footer#main-footer {
     width: 100px;
 }
 
-body.index.html {
+body {
   margin: 20;
   padding: 20;
-  font-family: "ocr-a-std", monospace;
+  font-family: var(--font-base);
   background-image: url('../img/logo nuevo-02.png');
   background-size: cover;
   background-position: center;
@@ -111,7 +117,6 @@ nav {
 }
 
 nav a {
-  font-family: "ocr-a-std", monospace;
   background: transparent;
   border: 1px solid rgb(0, 0, 0);
   color: white;
@@ -173,7 +178,6 @@ nav a:hover {
   left: 10px;
   margin: 0;
   font-weight: bold;
-  font-family: monospace;
 }
 
 /* GRID */
@@ -204,7 +208,6 @@ nav a:hover {
   left: 10px;
   margin: 0;
   font-weight: bold;
-  font-family: monospace;
 }
 
 /* Imagen */
