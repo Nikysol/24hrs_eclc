@@ -1,5 +1,18 @@
+@font-face {
+    font-family: '24hrsRegular';
+    src: url('../fonts/24hrsRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-    --font-base: ocr a;
+    --font-base: '24hrsRegular', monospace;
     --color-text: #ffffff;
     --color-bg: #000000;
 }
@@ -8,7 +21,7 @@
 body {
   margin: 0;
   background: #242424;
-  font-family: monospace;
+  font-family: var(--font-base);
   display: flex;
   justify-content: center;
   padding: 40px 0;
@@ -80,10 +93,10 @@ footer#main-footer {
     width: 100px;
 }
 
-body.index.html {
+body {
   margin: 20;
   padding: 20;
-  font-family: "ocr-a-std", monospace;
+  font-family: var(--font-base);
   background-image: url('../img/logo nuevo-02.png');
   background-size: cover;
   background-position: center;
@@ -104,7 +117,6 @@ nav {
 }
 
 nav a {
-  font-family: "ocr-a-std", monospace;
   background: transparent;
   border: 1px solid rgb(0, 0, 0);
   color: white;
@@ -163,11 +175,48 @@ nav a:hover {
   object-fit: cover;
 }
 
-/* Opción: deja huecos random en el grid */
-.foto:nth-child(2) {
-  grid-column: span 2; /* ocupa 2 columnas */
-}
-.foto:nth-child(5) {
-  grid-row: span 2; /* ocupa 2 filas */
+/* Título */
+.titulo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  font-weight: bold;
 }
 
+/* GRID */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Cada rectángulo */
+.foto {
+  position: relative;
+  background: #ddd;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Título */
+.titulo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Imagen */
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
