@@ -113,10 +113,12 @@ nav {
   justify-content: flex-end;
   gap: 20px;
   padding: 20px;
+  width: 100%;
   background: rgb(44, 44, 44);
 }
 
 nav a {
+  width: 50%;
   background: transparent;
   border: 1px solid rgb(0, 0, 0);
   color: white;
@@ -155,13 +157,13 @@ nav a:hover {
 .foto-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-  gap: 40px;
-  padding: 60px;
+  gap: 60px;
+  padding: 80px;
   justify-items: center;
 }
 
 .foto {
-  width: 250px;
+  width: 400px;
   height: 250px;
   background: #ddd; /* fallback por si no carga la foto */
   display: flex;
@@ -220,3 +222,4 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
 }
+
