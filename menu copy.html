@@ -8,19 +8,50 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="styles.css">
 
+</head>
 
-<body>
+  
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: black;  
+    font-family: "ocr-a-std", monospace;
+  }
 
-  <header>
-    <nav>
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;          /* CORREGIDO */
+    justify-content: center;      /* CENTRA EL LOGO */
+    padding: 0;
+    backdrop-filter: blur(5px);
+  }
 
-      <a href="./index.html">
-        <img src="./img/logo.svg" alt="">
-      </a>
+  /* Logo centrado */
+  .logo {
+    height: 40px;    /* LOGO MINI */
+    cursor: pointer;
+  }
 
-    </nav>
+  /* Si tienes links aún */
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;   /* CORREGIDO */
+    font-size: 18px;
+    transition: 0.3s;
+  }
 
- 
+  nav a:hover {
+    color: #999;     /* CORREGIDO */
+  }
+</style>
 
 
 
