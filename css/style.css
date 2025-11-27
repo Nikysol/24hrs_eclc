@@ -297,7 +297,11 @@ nav a:hover {
 .sidebar.active {
   transform: translate(0, 0);
 }
-
+.sidebar.active #info-btn,
+#info-btn:hover {
+background-color: red;
+color: red;
+}
 /* ===== PESTAÑA VISIBLE ===== */
 .pestana {
   position: absolute;
