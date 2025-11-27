@@ -19,7 +19,7 @@
 
 /* Estilos default */
 body {
-  margin: 0;
+  margin: 20px;
   background: #242424;
   font-family: var(--font-base);
   display: flex;
@@ -129,7 +129,7 @@ nav img {
 }
 
 /* ====== Fotografía ====== */
-.fotografia-page {
+.24hrsejecentral-page {
   font-family: "ocr-a-std", monospace;
   background: #f5f3eb;
   /* fondo neutro similar al ejemplo */
@@ -148,11 +148,19 @@ nav img {
 }
 
 .foto {
-  width: 400px;
-  height: 250px;
-  background: #ddd;
+  .foto {
+    width: 400px;
+    height: 220px;
+    background: black;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 3px solid white; /* grosor del borde */
+    margin: 0;               /* opcional */
+  }
+  
+
   /* fallback por si no carga la foto */
-  display: flex;
+  display: center;
   align-items: center;
   justify-content: center;
 }
@@ -185,12 +193,12 @@ nav img {
 
 /* Cada rectángulo */
 .foto {
-  position: relative;
-  background: #ddd;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 400px;       /* tamaño fijo del marco */
+  height: 220px;
+  border: 2px solid white; 
+  background: black;
+  overflow: hidden;   /* evita que la imagen se salga */
+  box-sizing: border-box; /* el borde NO aumenta el tamaño global */
 }
 
 /* Título */
@@ -215,10 +223,10 @@ nav img {
   /* centra horizontal */
   align-items: center;
   /* centra vertical */
-  min-height: 100vh;
-  padding-top: 80px;
+  min-height: 0vh;
+  padding-top: 0px;
   /* deja espacio para el header */
-  box-sizing: border-box;
+
 }
 
 body {
