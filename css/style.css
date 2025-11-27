@@ -273,3 +273,49 @@ nav a:hover {
   height: px;
   cursor: pointer;
 }
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;          /* escondida fuera de pantalla */
+  width: 250px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.3);
+  padding: 20px;
+  transition: right 0.35s ease;   /* animación suave */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ===== PESTAÑA VISIBLE ===== */
+.pestana {
+  position: absolute;
+  left: -45px;             /* sale hacia afuera */
+  top: 40%;
+  background: #ffffff;
+  color: #000;
+  writing-mode: vertical-rl;   /* texto vertical */
+  text-orientation: mixed;
+  padding: 10px 5px;
+  border-radius: 10px 0 0 10px;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.3);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== EFECTO DESLIZANTE ===== */
+.sidebar:hover {
+  right: 0;                /* se despliega */
+}
+
+/* ===== ZONA SENSIBLE EN BORDES ===== */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25px;             /* área donde se activa el hover */
+  height: 100%;
+}
