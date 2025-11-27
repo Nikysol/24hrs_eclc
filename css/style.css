@@ -270,23 +270,32 @@ nav a:hover {
 
 /* Logo */
 .logo {
-  height: px;
+  height: 300px;
   cursor: pointer;
 }
 /* ===== SIDEBAR ===== */
 .sidebar {
   position: fixed;
   top: 0;
-  right: -250px;          /* escondida fuera de pantalla */
-  width: 250px;
+  right: 0;
+  width: 50%;
+  transform: translate(100%, 0);
   height: 100%;
   background: #ffffff;
+  color: #000;
   box-shadow: -5px 0 10px rgba(0,0,0,0.3);
   padding: 20px;
-  transition: right 0.35s ease;   /* animación suave */
   display: flex;
   flex-direction: column;
+  transition: transform 300ms ease;
   justify-content: flex-start;
+  max-width: 600px;
+  min-width: 290px;
+  z-index: 9;
+}
+
+.sidebar.active {
+  transform: translate(0, 0);
 }
 
 /* ===== PESTAÑA VISIBLE ===== */
@@ -303,11 +312,6 @@ nav a:hover {
   box-shadow: -5px 0 10px rgba(0,0,0,0.3);
   font-weight: bold;
   cursor: pointer;
-}
-
-/* ===== EFECTO DESLIZANTE ===== */
-.sidebar:hover {
-  right: 0;                /* se despliega */
 }
 
 /* ===== ZONA SENSIBLE EN BORDES ===== */
