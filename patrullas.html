@@ -15,7 +15,7 @@
   <nav>
     <a href="camarasdeseguridad.html" title=""> Cámaras de seguridad</a>
     <a href="./" title="titulo">
-      <img src="./img/logo.svg" alt="">
+      <img src="./img/logo.png" alt="">
     </a>
     <a href="Track line.html" title="titulo">Track Line</a>
   </nav>
@@ -39,6 +39,105 @@
         por un comando armado.</p>
     </div>
   </div>
+
+  <!-- Video Controls -->
+  <div class="video-controls">
+    <button class="control-btn" id="playPauseBtn" onclick="togglePlayPause()">
+      <span id="playPauseIcon">||</span>
+    </button>
+    <button class="control-btn" id="muteBtn" onclick="toggleMute()">
+      <span id="muteIcon">✕</span>
+    </button>
+  </div>
+
+  <style>
+    .video-controls {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .control-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .control-btn:active {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .video-controls {
+        bottom: 20px;
+      }
+
+      .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    const video = document.querySelector('video');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playPauseIcon = document.getElementById('playPauseIcon');
+    const muteBtn = document.getElementById('muteBtn');
+    const muteIcon = document.getElementById('muteIcon');
+
+    function togglePlayPause() {
+      if (video.paused) {
+        video.play();
+        playPauseIcon.textContent = '||';
+      } else {
+        video.pause();
+        playPauseIcon.textContent = '▸';
+      }
+    }
+
+    function toggleMute() {
+      if (video.muted) {
+        video.muted = false;
+        muteIcon.textContent = ')))';
+      } else {
+        video.muted = true;
+        muteIcon.textContent = '✕';
+      }
+    }
+
+    // Initialize icons
+    if (video.paused) {
+      playPauseIcon.textContent = '▸';
+    } else {
+      playPauseIcon.textContent = '||';
+    }
+    if (video.muted) {
+      muteIcon.textContent = '✕';
+    } else {
+      muteIcon.textContent = ')))';
+    }
+  </script>
 
   <script src="./js/content.js"></script>
 </body>
