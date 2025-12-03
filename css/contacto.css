@@ -122,7 +122,6 @@
     display: flex;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
 }
@@ -134,17 +133,22 @@
     padding: 0;
     background: none;
     border: none;
-    color: #cccccc;
+    color: #ffffff !important;
     text-decoration: none;
     font-family: "ocr-a-std", monospace;
     font-size: 0.9rem;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-    pointer-events: none;
+    cursor: default;
 }
 
 .social-link:hover {
-    color: #cccccc;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.social-link:visited {
+    color: #ffffff !important;
 }
 
 .social-icon {
