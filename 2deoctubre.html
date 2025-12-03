@@ -17,12 +17,12 @@
     <a href="./" title="titulo">
       <img src="./img/logo.png" alt="">
     </a>
-    <a href="Track line.html" title="titulo">Track Line</a>
+    <a href="trackline.html" title="titulo">Track Line</a>
   </nav>
 
   <div class="video-wrapper">
     <video src="https://res.cloudinary.com/dd6crq3g6/video/upload/v1764191338/2_DE_OCTUBRE_NO_SE_OLVIDA-2_gkbvld.mp4"
-      autoplay muted loop controls> </video>
+      autoplay muted loop> </video>
   </div>
 
   <!-- sidebar para texto de videos-->
@@ -42,7 +42,15 @@
   </div>
 
   <!-- Video Controls -->
-  
+  <div class="video-controls">
+    <button class="control-btn" id="playPauseBtn" onclick="togglePlayPause()">
+      <span id="playPauseIcon">||</span>
+    </button>
+    <button class="control-btn" id="muteBtn" onclick="toggleMute()">
+      <span id="muteIcon">✕</span>
+    </button>
+  </div>
+
 
   <style>
     .video-controls {

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual Web – Experiencia “Tracking en Video”</title>
+  <!-- Tipografía OCR A desde Adobe Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/jlq1eip.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    :root {
+      --cam-color: #00ff00;
+      /* Green for camera overlay */
+      --cam-bg: #000000;
+      --cam-text: #e0e0e0;
+    }
+
+    body {
+      background-color: var(--cam-bg);
+      color: var(--cam-text);
+      font-family: "ocr-a-std", monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+
+
+    /* Main Container */
+    .cam-container {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 2px, 3px 100%;
+    }
+
+    /* Security Camera Overlay Elements */
+    .overlay-ui {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+
+
+
+
+
+
+    .crosshair {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .ch-tl {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .ch-tr {
+      top: 20px;
+      right: 20px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .ch-bl {
+      bottom: 20px;
+      left: 20px;
+      border-right: none;
+      border-top: none;
+    }
+
+    .ch-br {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+
+
+
+
+
+    /* Content Layout */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      height: 100%;
+      z-index: 20;
+      margin-top: 60px;
+      /* Space for header overlay */
+    }
+
+    /* Left Column: Visuals */
+    .visual-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--cam-color);
+      padding: 20px;
+      background: rgba(0, 20, 0, 0.3);
+      position: relative;
+    }
+
+    .diagram-img {
+      max-width: 100%;
+      max-height: 60vh;
+      border: 2px solid var(--cam-color);
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+      filter: sepia(100%) hue-rotate(50deg) saturate(300%) contrast(0.8);
+      /* Greenish night vision look */
+      transition: filter 0.3s ease;
+    }
+
+    .diagram-img:hover {
+      filter: none;
+      /* Reveal original colors on hover */
+    }
+
+    /* Right Column: Interactive Manual */
+    .manual-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .manual-header {
+      border-bottom: 2px solid var(--cam-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .manual-title {
+      font-size: 1.5rem;
+      color: var(--cam-color);
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .step-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .step-btn {
+      background: transparent;
+      border: 1px solid var(--cam-color);
+      color: var(--cam-color);
+      padding: 10px 15px;
+      cursor: pointer;
+      font-family: inherit;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .step-btn:hover,
+    .step-btn.active {
+      background: var(--cam-color);
+      color: #000;
+      box-shadow: 0 0 10px var(--cam-color);
+    }
+
+    .step-content {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #333;
+      padding: 20px;
+      flex: 1;
+      display: none;
+      /* Hidden by default */
+      animation: fadeIn 0.5s;
+    }
+
+    .step-content.active {
+      display: block;
+    }
+
+    .step-content h3 {
+      color: #fff;
+      border-left: 4px solid var(--cam-color);
+      padding-left: 10px;
+      margin-top: 0;
+    }
+
+    .step-content p,
+    .step-content ul {
+      line-height: 1.6;
+      color: #ccc;
+      text-align: left;
+    }
+
+    .step-content li {
+      margin-bottom: 8px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-col {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header (Consistent with other pages) -->
+  <nav>
+    <a href="camarasdeseguridad.html" title="camarasdeseguridad"> Cámaras de seguridad</a>
+    <a href="./" title="menu">
+      <img src="./img/logo.png" alt="">
+    </a>
+    <a href="trackline.html" title="trackline">Track Line</a>
+  </nav>
+
+  <div class="cam-container">
+    <!-- Security Camera Overlay -->
+    <!-- Security Camera Overlay -->
+    <div class="overlay-ui">
+      <div class="cam-name">CAM_04: MANUAL_EXP</div>
+
+      <!-- Esquinas (Crosshairs) -->
+      <div class="crosshair ch-tl"></div>
+      <div class="crosshair ch-tr"></div>
+      <div class="crosshair ch-bl"></div>
+      <div class="crosshair ch-br"></div>
+    </div>
+
+    <div class="content-grid">
+      <!-- Left: Visuals -->
+      <div class="visual-col">
+        <img src="./img/manual_diagram.jpg" alt="Diagrama de Experiencia" class="diagram-img">
+        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--cam-color);">[FIG. 1.0: ESQUEMA DE INTERACCIÓN]</p>
+      </div>
+
+      <!-- Right: Interactive Manual -->
+      <div class="manual-col">
+        <div class="manual-header">
+          <h1 class="manual-title">Manual Web – Experiencia “Tracking en Video”</h1>
+        </div>
+
+        <div class="step-nav">
+          <button class="step-btn active" onclick="showStep('intro')">Intro</button>
+          <button class="step-btn" onclick="showStep('obj')">Objetivo</button>
+          <button class="step-btn" onclick="showStep('step1')">Paso 1</button>
+          <button class="step-btn" onclick="showStep('step2')">Paso 2</button>
+          <button class="step-btn" onclick="showStep('step3')">Paso 3</button>
+          <button class="step-btn" onclick="showStep('step4')">Paso 4</button>
+          <button class="step-btn" onclick="showStep('reco')">Tips</button>
+          <button class="step-btn" onclick="showStep('edu')">Finalidad</button>
+        </div>
+
+        <!-- Intro -->
+        <div id="intro" class="step-content active">
+          <h3>Descripción General</h3>
+          <p>“Tracking en Video” es una experiencia inmersiva interactiva que te permite descubrir qué elementos captan
+            más tu atención mientras observas un video continuo con diferentes situaciones de movilidad.</p>
+          <p>A través de un sistema de seguimiento visual, podrás elegir una categoría de tu interés y observar cómo
+            cambia tu enfoque dentro de la proyección a medida que la actividad avanza.</p>
+        </div>
+
+        <!-- Objetivo -->
+        <div id="obj" class="step-content">
+          <h3>Objetivo de la Experiencia</h3>
+          <ul>
+            <li>Identificar qué tipo de elementos llaman más tu atención dentro de un entorno dinámico.</li>
+            <li>Visualizar cómo tu percepción y foco se modifican dependiendo de lo que decides rastrear.</li>
+            <li>Comprender la diversidad de actores que interactúan en escenarios de movilidad urbana.</li>
+          </ul>
+        </div>
+
+        <!-- Paso 1 -->
+        <div id="step1" class="step-content">
+          <h3>1. Observa la proyección</h3>
+          <p>Frente a ti verás un video en gran formato que muestra distintas escenas reales de movilidad: calles,
+            cruces, avenidas, y diferentes actores desplazándose simultáneamente.</p>
+        </div>
+
+        <!-- Paso 2 -->
+        <div id="step2" class="step-content">
+          <h3>2. Selecciona una categoría</h3>
+          <p>En el iPad encontrarás un menú interactivo con 6 categorías de seguimiento:</p>
+          <ul>
+            <li>Personas</li>
+            <li>Autos</li>
+            <li>Tráilers</li>
+            <li>Bicicletas</li>
+            <li>Motocicletas</li>
+            <li>(Categoría adicional disponible)</li>
+          </ul>
+          <p>Toca en la pantalla la categoría que deseas rastrear. Puedes elegir solo una a la vez.</p>
+        </div>
+
+        <!-- Paso 3 -->
+        <div id="step3" class="step-content">
+          <h3>3. Activa el seguimiento</h3>
+          <p>Una vez seleccionada la categoría, el sistema comenzará a identificar automáticamente los elementos
+            correspondientes dentro del video.</p>
+          <p>Estos aparecerán resaltados en la proyección mediante trazos, marcos o indicadores visuales.</p>
+        </div>
+
+        <!-- Paso 4 -->
+        <div id="step4" class="step-content">
+          <h3>4. Observa cómo cambia tu enfoque</h3>
+          <p>Mientras el video avanza:</p>
+          <ul>
+            <li>Notarás cómo tu atención se dirige hacia los elementos que elegiste rastrear.</li>
+            <li>Los movimientos, posiciones y trayectorias destacan de manera automática.</li>
+            <li>Podrás comparar la percepción libre (sin tracking) con la percepción guiada por tu elección.</li>
+          </ul>
+        </div>
+
+        <!-- Recomendaciones -->
+        <div id="reco" class="step-content">
+          <h3>Recomendaciones</h3>
+          <ul>
+            <li>Mantente frente a la pantalla principal para identificar claramente los elementos resaltados.</li>
+            <li>Cambia de categoría en cualquier momento si deseas comparar diferentes actores de movilidad.</li>
+            <li>Observa no solo el elemento seguido, sino también cómo interactúa con su entorno.</li>
+          </ul>
+        </div>
+
+        <!-- Finalidad -->
+        <div id="edu" class="step-content">
+          <h3>Finalidad Educativa</h3>
+          <p>Esta experiencia busca ayudarte a:</p>
+          <ul>
+            <li>Comprender la complejidad del tráfico y la movilidad urbana.</li>
+            <li>Identificar patrones visuales que guían tu atención sin que lo notes.</li>
+            <li>Reflexionar sobre los elementos que influyen en la seguridad y el flujo en las calles.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+    // Step Navigation
+    function showStep(stepId) {
+      // 1. Ocultar todos los pasos
+      const allSteps = document.querySelectorAll('.step-content');
+      for (let i = 0; i < allSteps.length; i++) {
+        allSteps[i].style.display = 'none';
+      }
+
+      // 2. Quitar la clase 'active' de todos los botones
+      const allButtons = document.querySelectorAll('.step-btn');
+      for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove('active');
+      }
+
+      // 3. Mostrar el paso seleccionado
+      document.getElementById(stepId).style.display = 'block';
+
+      // 4. Activar el botón correspondiente (buscamos cuál botón tiene el onclick con ese id)
+      for (let i = 0; i < allButtons.length; i++) {
+        if (allButtons[i].getAttribute('onclick').includes(stepId)) {
+          allButtons[i].classList.add('active');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

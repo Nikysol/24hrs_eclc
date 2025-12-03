@@ -397,7 +397,7 @@ body::after {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
-  text-align: justify;
+  text-align: left;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
 }
