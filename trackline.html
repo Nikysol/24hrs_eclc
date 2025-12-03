@@ -8,263 +8,36 @@
   <!-- Tipografía OCR A desde Adobe Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/jlq1eip.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/trackline.css">
 
-  <style>
-    :root {
-      --cam-color: #00ff00;
-      /* Green for camera overlay */
-      --cam-bg: #000000;
-      --cam-text: #e0e0e0;
-    }
-
-    body {
-      background-color: var(--cam-bg);
-      color: var(--cam-text);
-      font-family: "ocr-a-std", monospace;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-
-
-    /* Main Container */
-    .cam-container {
-      position: relative;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      box-sizing: border-box;
-      background:
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      background-size: 100% 2px, 3px 100%;
-    }
-
-    /* Security Camera Overlay Elements */
-    .overlay-ui {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 10;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-
-
-
-
-
-
-    .crosshair {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .ch-tl {
-      top: 20px;
-      left: 20px;
-      border-right: none;
-      border-bottom: none;
-    }
-
-    .ch-tr {
-      top: 20px;
-      right: 20px;
-      border-left: none;
-      border-bottom: none;
-    }
-
-    .ch-bl {
-      bottom: 20px;
-      left: 20px;
-      border-right: none;
-      border-top: none;
-    }
-
-    .ch-br {
-      bottom: 20px;
-      right: 20px;
-      border-left: none;
-      border-top: none;
-    }
-
-
-
-
-
-    /* Content Layout */
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      height: 100%;
-      z-index: 20;
-      margin-top: 60px;
-      /* Space for header overlay */
-    }
-
-    /* Left Column: Visuals */
-    .visual-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--cam-color);
-      padding: 20px;
-      background: rgba(0, 20, 0, 0.3);
-      position: relative;
-    }
-
-    .diagram-img {
-      max-width: 100%;
-      max-height: 60vh;
-      border: 2px solid var(--cam-color);
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
-      filter: sepia(100%) hue-rotate(50deg) saturate(300%) contrast(0.8);
-      /* Greenish night vision look */
-      transition: filter 0.3s ease;
-    }
-
-    .diagram-img:hover {
-      filter: none;
-      /* Reveal original colors on hover */
-    }
-
-    /* Right Column: Interactive Manual */
-    .manual-col {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .manual-header {
-      border-bottom: 2px solid var(--cam-color);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-
-    .manual-title {
-      font-size: 1.5rem;
-      color: var(--cam-color);
-      text-transform: uppercase;
-      margin: 0;
-    }
-
-    .step-nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .step-btn {
-      background: transparent;
-      border: 1px solid var(--cam-color);
-      color: var(--cam-color);
-      padding: 10px 15px;
-      cursor: pointer;
-      font-family: inherit;
-      text-transform: uppercase;
-      transition: all 0.3s;
-    }
-
-    .step-btn:hover,
-    .step-btn.active {
-      background: var(--cam-color);
-      color: #000;
-      box-shadow: 0 0 10px var(--cam-color);
-    }
-
-    .step-content {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #333;
-      padding: 20px;
-      flex: 1;
-      display: none;
-      /* Hidden by default */
-      animation: fadeIn 0.5s;
-    }
-
-    .step-content.active {
-      display: block;
-    }
-
-    .step-content h3 {
-      color: #fff;
-      border-left: 4px solid var(--cam-color);
-      padding-left: 10px;
-      margin-top: 0;
-    }
-
-    .step-content p,
-    .step-content ul {
-      line-height: 1.6;
-      color: #ccc;
-      text-align: left;
-    }
-
-    .step-content li {
-      margin-bottom: 8px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .visual-col {
-        order: -1;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
   <!-- Header (Consistent with other pages) -->
   <nav>
-    <a href="camarasdeseguridad.html" title="camarasdeseguridad"> Cámaras de seguridad</a>
-    <a href="./" title="menu">
-      <img src="./img/logo.png" alt="">
+    <a href="camarasdeseguridad.html" title="Cámaras">Cámaras de seguridad</a>
+    <a href="./" title="Home">
+      <img src="./img/logo.png" alt="Logo" style="filter: invert(1) sepia(100%) hue-rotate(50deg) saturate(500%);">
     </a>
-    <a href="trackline.html" title="trackline">Track Line</a>
+    <a href="trackline.html" title="Track Line" style="background: var(--cam-color); color: #000 !important;">Track
+      Line</a>
   </nav>
 
   <div class="cam-container">
     <!-- Security Camera Overlay -->
-    <!-- Security Camera Overlay -->
     <div class="overlay-ui">
+      <div class="rec-indicator">
+        <div class="rec-dot"></div> REC
+      </div>
+      <div class="time-code" id="timeCode">00:00:00:00</div>
       <div class="cam-name">CAM_04: MANUAL_EXP</div>
 
-      <!-- Esquinas (Crosshairs) -->
       <div class="crosshair ch-tl"></div>
       <div class="crosshair ch-tr"></div>
       <div class="crosshair ch-bl"></div>
       <div class="crosshair ch-br"></div>
+      <div class="center-cross"></div>
     </div>
 
     <div class="content-grid">
@@ -289,8 +62,6 @@
           <button class="step-btn" onclick="showStep('step4')">Paso 4</button>
           <button class="step-btn" onclick="showStep('reco')">Tips</button>
           <button class="step-btn" onclick="showStep('edu')">Finalidad</button>
-          <a href="tipografia.html" class="step-btn"
-            style="text-decoration: none; display: inline-block; text-align: center; line-height: normal; padding-top: 10px;">Tipografía</a>
         </div>
 
         <!-- Intro -->
@@ -379,29 +150,30 @@
   </div>
 
   <script>
-
+    // Update Time Code
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('es-ES', { hour12: false }) + ':' + Math.floor(now.getMilliseconds() / 10).toString().padStart(2, '0');
+      document.getElementById('timeCode').innerText = timeString;
+    }
+    setInterval(updateTime, 40);
 
     // Step Navigation
     function showStep(stepId) {
-      // 1. Ocultar todos los pasos
-      const allSteps = document.querySelectorAll('.step-content');
-      for (let i = 0; i < allSteps.length; i++) {
-        allSteps[i].style.display = 'none';
-      }
+      // Hide all steps
+      document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+      // Remove active class from buttons
+      document.querySelectorAll('.step-btn').forEach(el => el.classList.remove('active'));
 
-      // 2. Quitar la clase 'active' de todos los botones
-      const allButtons = document.querySelectorAll('.step-btn');
-      for (let i = 0; i < allButtons.length; i++) {
-        allButtons[i].classList.remove('active');
-      }
-
-      // 3. Mostrar el paso seleccionado
-      document.getElementById(stepId).style.display = 'block';
-
-      // 4. Activar el botón correspondiente (buscamos cuál botón tiene el onclick con ese id)
-      for (let i = 0; i < allButtons.length; i++) {
-        if (allButtons[i].getAttribute('onclick').includes(stepId)) {
-          allButtons[i].classList.add('active');
+      // Show selected step
+      document.getElementById(stepId).classList.add('active');
+      // Highlight button
+      // Find the button that calls this function (simple way)
+      const buttons = document.querySelectorAll('.step-btn');
+      for (let btn of buttons) {
+        if (btn.getAttribute('onclick').includes(stepId)) {
+          btn.classList.add('active');
+          break;
         }
       }
     }
