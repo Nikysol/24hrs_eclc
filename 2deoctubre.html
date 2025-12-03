@@ -144,8 +144,18 @@
     } else {
       muteIcon.innerHTML = volUpIcon;
     }
-  </script>
 
-  <script src="./js/content.js"></script>
+    // Sidebar Info Button Logic (Inlined)
+    const infoBtn = document.querySelector("#info-btn");
+    if (infoBtn) {
+      infoBtn.addEventListener("click", function () {
+        const sidebar = document.querySelector(".sidebar");
+        if (sidebar) {
+          sidebar.classList.toggle("active");
+        }
+      });
+    }
+  </script>
+</body>
 
 </html>
