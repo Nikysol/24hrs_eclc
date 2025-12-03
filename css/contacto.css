@@ -123,31 +123,28 @@
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 
 .social-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    padding: 0;
+    background: none;
+    border: none;
     color: #cccccc;
     text-decoration: none;
     font-family: "ocr-a-std", monospace;
-    font-size: 0.85rem;
-    text-transform: uppercase;
+    font-size: 0.9rem;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
+    pointer-events: none;
 }
 
 .social-link:hover {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    color: #cccccc;
 }
 
 .social-icon {
