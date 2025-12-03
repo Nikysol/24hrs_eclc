@@ -16,140 +16,171 @@
 <body>
 
   <!-- Header (Consistent with other pages) -->
- <!-- header -->
- <nav>
-  <a href="camarasdeseguridad.html" title="camarasdeseguridad">Cámaras de seguridad</a>
-  <a href="camarasdeseguridad.html" title="camarasdeseguridad">
-    <img src="./img/logo.png" alt="">
-  </a>
-  <a href="trackline.html" title="tracline">Track Line</a>
-</nav>
+  <!-- header -->
+  <nav>
+    <a href="camarasdeseguridad.html" title="camarasdeseguridad">Cámaras de seguridad</a>
+    <a href="camarasdeseguridad.html" title="camarasdeseguridad">
+      <img src="./img/logo.png" alt="">
+    </a>
+    <a href="trackline.html" title="tracline">Track Line</a>
+  </nav>
 
   <div class="cam-container">
     <!-- Security Camera Overlay -->
     <div class="overlay-ui">
-   
-      </div>
-      <div class="time-code" id="timeCode">00:00:00:00</div>
-      <div class="cam-name">CAM_04: MANUAL_EXP</div>
 
-      <div class="crosshair ch-tl"></div>
-      <div class="crosshair ch-tr"></div>
-      <div class="crosshair ch-bl"></div>
-      <div class="crosshair ch-br"></div>
-      <div class="center-cross"></div>
+    </div>
+    <div class="time-code" id="timeCode">00:00:00:00</div>
+    <div class="cam-name">CAM_04: MANUAL_EXP</div>
+
+    <div class="crosshair ch-tl"></div>
+    <div class="crosshair ch-tr"></div>
+    <div class="crosshair ch-bl"></div>
+    <div class="crosshair ch-br"></div>
+    <div class="center-cross"></div>
+  </div>
+
+  <div class="content-grid">
+    <!-- Left: Visuals -->
+    <div class="visual-col">
+      <img src="./img/manual_diagram.jpg" alt="Diagrama de Experiencia" class="diagram-img">
+      <p style="margin-top: 10px; font-size: 0.8rem; color: var(--cam-color);">[FIG. 1.0: ESQUEMA DE INTERACCIÓN]</p>
     </div>
 
-    <div class="content-grid">
-      <!-- Left: Visuals -->
-      <div class="visual-col">
-        <img src="./img/manual_diagram.jpg" alt="Diagrama de Experiencia" class="diagram-img">
-        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--cam-color);">[FIG. 1.0: ESQUEMA DE INTERACCIÓN]</p>
+    <!-- Right: Interactive Manual -->
+    <div class="manual-col">
+      <div class="manual-header">
+        <h1 class="manual-title">Manual Web – Experiencia “Tracking en Video”</h1>
       </div>
 
-      <!-- Right: Interactive Manual -->
-      <div class="manual-col">
-        <div class="manual-header">
-          <h1 class="manual-title">Manual Web – Experiencia “Tracking en Video”</h1>
-        </div>
-
-        <div class="step-nav">
-          <button class="step-btn active" onclick="showStep('intro')">Intro</button>
-          <button class="step-btn" onclick="showStep('obj')">Objetivo</button>
-          <button class="step-btn" onclick="showStep('step1')">Paso 1</button>
-          <button class="step-btn" onclick="showStep('step2')">Paso 2</button>
-          <button class="step-btn" onclick="showStep('step3')">Paso 3</button>
-          <button class="step-btn" onclick="showStep('step4')">Paso 4</button>
-          <button class="step-btn" onclick="showStep('reco')">Tips</button>
-          <button class="step-btn" onclick="showStep('edu')">Finalidad</button>
-          <a href="tipografia.html" title="Tipografía" class="step-btn">Tipografía</a>
-
-        </div>
-
-        <!-- Intro -->
-        <div id="intro" class="step-content active">
-          <h3>Descripción General</h3>
-          <p>“Tracking en Video” es una experiencia inmersiva interactiva que te permite descubrir qué elementos captan
-            más tu atención mientras observas un video continuo con diferentes situaciones de movilidad.</p>
-          <p>A través de un sistema de seguimiento visual, podrás elegir una categoría de tu interés y observar cómo
-            cambia tu enfoque dentro de la proyección a medida que la actividad avanza.</p>
-        </div>
-
-        <!-- Objetivo -->
-        <div id="obj" class="step-content">
-          <h3>Objetivo de la Experiencia</h3>
-          <ul>
-            <li>Identificar qué tipo de elementos llaman más tu atención dentro de un entorno dinámico.</li>
-            <li>Visualizar cómo tu percepción y foco se modifican dependiendo de lo que decides rastrear.</li>
-            <li>Comprender la diversidad de actores que interactúan en escenarios de movilidad urbana.</li>
-          </ul>
-        </div>
-
-        <!-- Paso 1 -->
-        <div id="step1" class="step-content">
-          <h3>1. Observa la proyección</h3>
-          <p>Frente a ti verás un video en gran formato que muestra distintas escenas reales de movilidad: calles,
-            cruces, avenidas, y diferentes actores desplazándose simultáneamente.</p>
-        </div>
-
-        <!-- Paso 2 -->
-        <div id="step2" class="step-content">
-          <h3>2. Selecciona una categoría</h3>
-          <p>En el iPad encontrarás un menú interactivo con 6 categorías de seguimiento:</p>
-          <ul>
-            <li>Personas</li>
-            <li>Autos</li>
-            <li>Tráilers</li>
-            <li>Bicicletas</li>
-            <li>Motocicletas</li>
-            <li>(Categoría adicional disponible)</li>
-          </ul>
-          <p>Toca en la pantalla la categoría que deseas rastrear. Puedes elegir solo una a la vez.</p>
-        </div>
-
-        <!-- Paso 3 -->
-        <div id="step3" class="step-content">
-          <h3>3. Activa el seguimiento</h3>
-          <p>Una vez seleccionada la categoría, el sistema comenzará a identificar automáticamente los elementos
-            correspondientes dentro del video.</p>
-          <p>Estos aparecerán resaltados en la proyección mediante trazos, marcos o indicadores visuales.</p>
-        </div>
-
-        <!-- Paso 4 -->
-        <div id="step4" class="step-content">
-          <h3>4. Observa cómo cambia tu enfoque</h3>
-          <p>Mientras el video avanza:</p>
-          <ul>
-            <li>Notarás cómo tu atención se dirige hacia los elementos que elegiste rastrear.</li>
-            <li>Los movimientos, posiciones y trayectorias destacan de manera automática.</li>
-            <li>Podrás comparar la percepción libre (sin tracking) con la percepción guiada por tu elección.</li>
-          </ul>
-        </div>
-
-        <!-- Recomendaciones -->
-        <div id="reco" class="step-content">
-          <h3>Recomendaciones</h3>
-          <ul>
-            <li>Mantente frente a la pantalla principal para identificar claramente los elementos resaltados.</li>
-            <li>Cambia de categoría en cualquier momento si deseas comparar diferentes actores de movilidad.</li>
-            <li>Observa no solo el elemento seguido, sino también cómo interactúa con su entorno.</li>
-          </ul>
-        </div>
-
-        <!-- Finalidad -->
-        <div id="edu" class="step-content">
-          <h3>Finalidad Educativa</h3>
-          <p>Esta experiencia busca ayudarte a:</p>
-          <ul>
-            <li>Comprender la complejidad del tráfico y la movilidad urbana.</li>
-            <li>Identificar patrones visuales que guían tu atención sin que lo notes.</li>
-            <li>Reflexionar sobre los elementos que influyen en la seguridad y el flujo en las calles.</li>
-          </ul>
-        </div>
+      <div class="step-nav">
+        <button class="step-btn active" onclick="showStep('intro')">Intro</button>
+        <button class="step-btn" onclick="showStep('obj')">Objetivo</button>
+        <button class="step-btn" onclick="showStep('step1')">Paso 1</button>
+        <button class="step-btn" onclick="showStep('step2')">Paso 2</button>
+        <button class="step-btn" onclick="showStep('step3')">Paso 3</button>
+        <button class="step-btn" onclick="showStep('step4')">Paso 4</button>
+        <button class="step-btn" onclick="showStep('reco')">Tips</button>
+        <button class="step-btn" onclick="showStep('edu')">Finalidad</button>
+        <a href="tipografia.html" title="Tipografía" class="step-btn">Tipografía</a>
 
       </div>
+
+      <!-- Intro -->
+      <div id="intro" class="step-content active">
+        <h3>Descripción General</h3>
+        <p>“Tracking en Video” es una experiencia inmersiva interactiva que te permite descubrir qué elementos captan
+          más tu atención mientras observas un video continuo con diferentes situaciones de movilidad.</p>
+        <p>A través de un sistema de seguimiento visual, podrás elegir una categoría de tu interés y observar cómo
+          cambia tu enfoque dentro de la proyección a medida que la actividad avanza.</p>
+      </div>
+
+      <!-- Objetivo -->
+      <div id="obj" class="step-content">
+        <h3>Objetivo de la Experiencia</h3>
+        <ul>
+          <li>Identificar qué tipo de elementos llaman más tu atención dentro de un entorno dinámico.</li>
+          <li>Visualizar cómo tu percepción y foco se modifican dependiendo de lo que decides rastrear.</li>
+          <li>Comprender la diversidad de actores que interactúan en escenarios de movilidad urbana.</li>
+        </ul>
+      </div>
+
+      <!-- Paso 1 -->
+      <div id="step1" class="step-content">
+        <h3>1. Observa la proyección</h3>
+        <p>Frente a ti verás un video en gran formato que muestra distintas escenas reales de movilidad: calles,
+          cruces, avenidas, y diferentes actores desplazándose simultáneamente.</p>
+      </div>
+
+      <!-- Paso 2 -->
+      <div id="step2" class="step-content">
+        <h3>2. Selecciona una categoría</h3>
+        <p>En el iPad encontrarás un menú interactivo con 6 categorías de seguimiento:</p>
+        <ul>
+          <li>Personas</li>
+          <li>Autos</li>
+          <li>Tráilers</li>
+          <li>Bicicletas</li>
+          <li>Motocicletas</li>
+          <li>(Categoría adicional disponible)</li>
+        </ul>
+        <p>Toca en la pantalla la categoría que deseas rastrear. Puedes elegir solo una a la vez.</p>
+      </div>
+
+      <!-- Paso 3 -->
+      <div id="step3" class="step-content">
+        <h3>3. Activa el seguimiento</h3>
+        <p>Una vez seleccionada la categoría, el sistema comenzará a identificar automáticamente los elementos
+          correspondientes dentro del video.</p>
+        <p>Estos aparecerán resaltados en la proyección mediante trazos, marcos o indicadores visuales.</p>
+      </div>
+
+      <!-- Paso 4 -->
+      <div id="step4" class="step-content">
+        <h3>4. Observa cómo cambia tu enfoque</h3>
+        <p>Mientras el video avanza:</p>
+        <ul>
+          <li>Notarás cómo tu atención se dirige hacia los elementos que elegiste rastrear.</li>
+          <li>Los movimientos, posiciones y trayectorias destacan de manera automática.</li>
+          <li>Podrás comparar la percepción libre (sin tracking) con la percepción guiada por tu elección.</li>
+        </ul>
+      </div>
+
+      <!-- Recomendaciones -->
+      <div id="reco" class="step-content">
+        <h3>Recomendaciones</h3>
+        <ul>
+          <li>Mantente frente a la pantalla principal para identificar claramente los elementos resaltados.</li>
+          <li>Cambia de categoría en cualquier momento si deseas comparar diferentes actores de movilidad.</li>
+          <li>Observa no solo el elemento seguido, sino también cómo interactúa con su entorno.</li>
+        </ul>
+      </div>
+
+      <!-- Finalidad -->
+      <div id="edu" class="step-content">
+        <h3>Finalidad Educativa</h3>
+        <p>Esta experiencia busca ayudarte a:</p>
+        <ul>
+          <li>Comprender la complejidad del tráfico y la movilidad urbana.</li>
+          <li>Identificar patrones visuales que guían tu atención sin que lo notes.</li>
+          <li>Reflexionar sobre los elementos que influyen en la seguridad y el flujo en las calles.</li>
+        </ul>
+      </div>
+
     </div>
   </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>24hrs EJE CENTRAL</h3>
+        <p style="line-height: 1.6;">Un proyecto transmedia que explora 24 horas en el Eje Central.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Navegación</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="menu.html">Menú</a></li>
+          <li><a href="camarasdeseguridad.html">Cámaras de Seguridad</a></li>
+          <li><a href="trackline.html">Track Line</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <div class="social-links">
+          <a href="#" target="_blank">Instagram</a>
+          <a href="#" target="_blank">LinkedIn</a>
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 24hrs EJE CENTRAL. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="./js/trackline.js"></script>
 </body>
