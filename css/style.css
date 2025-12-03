@@ -50,6 +50,7 @@ h2 {
 
 h3 {
   font-size: 1.5rem;
+  margin-bottom: 1em;
 }
 
 h4 {
@@ -150,7 +151,7 @@ nav a:hover img {
 }
 
 /* ====== Fotografía ====== */
-.24hrsejecentral-page {
+.hrsejecentral-page {
   font-family: "ocr-a-std", monospace;
   background: #f5f3eb;
   /* fondo neutro similar al ejemplo */
